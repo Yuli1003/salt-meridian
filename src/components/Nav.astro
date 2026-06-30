@@ -41,24 +41,3 @@ const isActive = (href: string) =>
     </div>
   </div>
 </header>
-
-<script is:inline>
-  (function () {
-    // The hide-until-scrolled reveal is a home-page-only effect. Everywhere else
-    // the header is a normal, always-visible bar (never gets .nav-hidden).
-    if (!document.body.classList.contains('is-home')) return;
-    var header = document.querySelector('.site-header');
-    var hero = document.querySelector('.hero');
-    if (!header || !hero) return;
-    // Reveal only once the hero image has essentially scrolled away.
-    function threshold() {
-      return Math.max(120, hero.offsetHeight - 72);
-    }
-    function update() {
-      header.classList.toggle('nav-hidden', window.scrollY < threshold());
-    }
-    update();
-    window.addEventListener('scroll', update, { passive: true });
-    window.addEventListener('resize', update);
-  })();
-</script>
