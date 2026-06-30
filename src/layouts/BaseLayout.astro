@@ -15,6 +15,7 @@ interface Props {
 }
 
 const { title, description, path = '', ogImageKey = 'hero' } = Astro.props;
+const isHome = path === '' || path === '/';
 const fullTitle =
   path === '' || path === '/' ? `${SITE.name} — ${SITE.tagline}` : `${title} · ${SITE.name}`;
 const canonical = new URL(path, SITE.url).href;
@@ -49,7 +50,7 @@ const ogImage = img(ogImageKey, { w: 1200, h: 630 });
     <meta name="generator" content={Astro.generator} />
     <slot name="head" />
   </head>
-  <body>
+  <body class:list={[isHome && 'is-home']}>
     <Nav />
     <main id="main">
       <slot />

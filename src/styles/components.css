@@ -118,6 +118,14 @@
   backdrop-filter: blur(12px) saturate(1.1);
   border-bottom: 1px solid color-mix(in oklab, var(--color-border) 70%, transparent);
 }
+/* On the home page the bar overlays the hero (no reserved flow space, hero sits
+   flush to the top) and is revealed on scroll by the Nav script. */
+body.is-home .site-header {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+}
 .site-header > div {
   display: grid;
   align-items: center;
